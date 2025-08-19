@@ -19,13 +19,13 @@ const userSchema = new Schema(
       lowercase: true,
       trim: true,
     },
-    FullName: {
+    fullName: {
       type: String,
       required: true,
       trim: true,
       index: true,
     },
-    avtar: {
+    avatar: {
       type: String, //cloudinary url
       required: true,
     },
@@ -72,10 +72,11 @@ userSchema.methods.generateAccessToken = function () {
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
+          expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
     )
 }
+
 userSchema.methods.generateRefreshToken = function () {
 return jwt.sign(
         {
